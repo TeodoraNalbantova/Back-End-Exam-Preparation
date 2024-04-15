@@ -1,0 +1,225 @@
+{
+	"id": "2afa1452-fbed-4119-ab2d-63b243146d29",
+	"name": "IdeaCenterAPITesting",
+	"timestamp": "2024-04-13T14:04:47.198Z",
+	"collection_id": "28755082-15ad9288-875e-4927-b346-5fb212d34ab9",
+	"folder_id": 0,
+	"environment_id": "28755082-07d1be41-6e21-4ad6-af7a-3ca26887e72b",
+	"totalPass": 13,
+	"delay": 0,
+	"persist": true,
+	"status": "finished",
+	"startedAt": "2024-04-13T14:04:45.653Z",
+	"totalFail": 0,
+	"results": [
+		{
+			"id": "ea4d067f-1524-4b61-b810-cb47a75db9cf",
+			"name": "Login and Authentication",
+			"url": "http://softuni-qa-loadbalancer-2137572849.eu-north-1.elb.amazonaws.com:84  /api/User/Authentication",
+			"time": 362,
+			"responseCode": {
+				"code": 200,
+				"name": "OK"
+			},
+			"tests": {
+				"Status code is 200": true,
+				"Response Body Contains email, password and accessToken": true
+			},
+			"testPassFailCounts": {
+				"Status code is 200": {
+					"pass": 1,
+					"fail": 0
+				},
+				"Response Body Contains email, password and accessToken": {
+					"pass": 1,
+					"fail": 0
+				}
+			},
+			"times": [
+				362
+			],
+			"allTests": [
+				{
+					"Status code is 200": true,
+					"Response Body Contains email, password and accessToken": true
+				}
+			]
+		},
+		{
+			"id": "8d1660c5-1790-438b-a91b-ebbcf1fdc557",
+			"name": "Create a New Idea",
+			"url": "http://softuni-qa-loadbalancer-2137572849.eu-north-1.elb.amazonaws.com:84  /api/Idea/Create",
+			"time": 99,
+			"responseCode": {
+				"code": 200,
+				"name": "OK"
+			},
+			"tests": {
+				"Response status code is 200": true,
+				"Response message is 'Successfully created!'": true,
+				"Idea title and description are correct": true
+			},
+			"testPassFailCounts": {
+				"Response status code is 200": {
+					"pass": 1,
+					"fail": 0
+				},
+				"Response message is 'Successfully created!'": {
+					"pass": 1,
+					"fail": 0
+				},
+				"Idea title and description are correct": {
+					"pass": 1,
+					"fail": 0
+				}
+			},
+			"times": [
+				99
+			],
+			"allTests": [
+				{
+					"Response status code is 200": true,
+					"Response message is 'Successfully created!'": true,
+					"Idea title and description are correct": true
+				}
+			]
+		},
+		{
+			"id": "1ec5aa01-fd52-44a7-a508-80b9825a79fd",
+			"name": "List All Ideas",
+			"url": "http://softuni-qa-loadbalancer-2137572849.eu-north-1.elb.amazonaws.com:84  /api/Idea/All",
+			"time": 97,
+			"responseCode": {
+				"code": 200,
+				"name": "OK"
+			},
+			"tests": {
+				"Status code is 200": true,
+				"Response data is an array with more than 0 items.": true
+			},
+			"testPassFailCounts": {
+				"Status code is 200": {
+					"pass": 1,
+					"fail": 0
+				},
+				"Response data is an array with more than 0 items.": {
+					"pass": 1,
+					"fail": 0
+				}
+			},
+			"times": [
+				97
+			],
+			"allTests": [
+				{
+					"Status code is 200": true,
+					"Response data is an array with more than 0 items.": true
+				}
+			]
+		},
+		{
+			"id": "a02ee03f-0e31-4e8f-a5bc-113fcb10b3c3",
+			"name": "Edit the Last Created Idea",
+			"url": "http://softuni-qa-loadbalancer-2137572849.eu-north-1.elb.amazonaws.com:84  /api/Idea/Edit?ideaID=a94d6e89-919c-4839-20eb-08dc5a3f474d",
+			"time": 169,
+			"responseCode": {
+				"code": 200,
+				"name": "OK"
+			},
+			"tests": {
+				"Response status code is 200": true,
+				"Edited successfully'": true,
+				"Idea title is correct": true
+			},
+			"testPassFailCounts": {
+				"Response status code is 200": {
+					"pass": 1,
+					"fail": 0
+				},
+				"Edited successfully'": {
+					"pass": 1,
+					"fail": 0
+				},
+				"Idea title is correct": {
+					"pass": 1,
+					"fail": 0
+				}
+			},
+			"times": [
+				169
+			],
+			"allTests": [
+				{
+					"Response status code is 200": true,
+					"Edited successfully'": true,
+					"Idea title is correct": true
+				}
+			]
+		},
+		{
+			"id": "b14a868b-9919-4b97-a812-48c5ef46f1eb",
+			"name": "Delete the Edited Idea",
+			"url": "http://softuni-qa-loadbalancer-2137572849.eu-north-1.elb.amazonaws.com:84  /api/Idea/Delete?ideaID=a94d6e89-919c-4839-20eb-08dc5a3f474d",
+			"time": 113,
+			"responseCode": {
+				"code": 200,
+				"name": "OK"
+			},
+			"tests": {
+				"Response status code is 200": true,
+				"Response is a string": true,
+				"Response message is 'The idea is deleted!'": true
+			},
+			"testPassFailCounts": {
+				"Response status code is 200": {
+					"pass": 1,
+					"fail": 0
+				},
+				"Response is a string": {
+					"pass": 1,
+					"fail": 0
+				},
+				"Response message is 'The idea is deleted!'": {
+					"pass": 1,
+					"fail": 0
+				}
+			},
+			"times": [
+				113
+			],
+			"allTests": [
+				{
+					"Response status code is 200": true,
+					"Response is a string": true,
+					"Response message is 'The idea is deleted!'": true
+				}
+			]
+		}
+	],
+	"count": 1,
+	"totalTime": 840,
+	"collection": {
+		"requests": [
+			{
+				"id": "ea4d067f-1524-4b61-b810-cb47a75db9cf",
+				"method": "POST"
+			},
+			{
+				"id": "8d1660c5-1790-438b-a91b-ebbcf1fdc557",
+				"method": "POST"
+			},
+			{
+				"id": "1ec5aa01-fd52-44a7-a508-80b9825a79fd",
+				"method": "GET"
+			},
+			{
+				"id": "a02ee03f-0e31-4e8f-a5bc-113fcb10b3c3",
+				"method": "PUT"
+			},
+			{
+				"id": "b14a868b-9919-4b97-a812-48c5ef46f1eb",
+				"method": "DELETE"
+			}
+		]
+	}
+}
