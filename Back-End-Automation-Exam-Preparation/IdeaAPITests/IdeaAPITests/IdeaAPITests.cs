@@ -69,6 +69,7 @@ namespace IdeaAPITests
         [Test, Order(1)]
         public void CreateIdea_WithRequiredFields_ShouldSucceed()
         {
+            //Arrange
             var ideaRequest = new IdeaDto
             {
                 Title = "TestTitle",
@@ -79,12 +80,12 @@ namespace IdeaAPITests
 
             var request = new RestRequest("/api/Idea/Create");
             request.AddBody(ideaRequest);
-
+            //Act
             var response = client.Execute(request, Method.Post);
 
             var responseData = JsonSerializer.Deserialize<ApiResponseDTO>(response.Content);
 
-
+            //Assert
             Assert.That(response.StatusCode, Is.EqualTo(HttpStatusCode.OK));
 
             Assert.That(responseData.Msg, Is.EqualTo($"Successfully created!"));
@@ -95,17 +96,21 @@ namespace IdeaAPITests
         public void GetAllIdeas_ShouldRetunrNotEmptyArray()
         {
 
-
+            // Arrange
             var request = new RestRequest("/api/Idea/All");
+
+            //Act
 
             var response = client.Execute(request, Method.Get);
 
             var responseDataArray = JsonSerializer.Deserialize<ApiResponseDTO[]>(response.Content);
 
-
+            //Assert
             Assert.That(response.StatusCode, Is.EqualTo(HttpStatusCode.OK));
 
-            Assert.That(responseDataArray.Length, Is.GreaterThan(0));
+            Assert.That(responseDataArray.Length, Is.GreaterThan(0))
+
+            // Взимаме Id на последнта идея от масива
 
             lastIdeaId = responseDataArray[responseDataArray.Length - 1].IdeaId;
 
@@ -114,22 +119,24 @@ namespace IdeaAPITests
         [Test, Order(3)]
         public void EditIdea_WithCorrectData_ShouldSuccceed()
         {
+            //Arange
             var ideaRequest = new IdeaDto
             {
                 Title = "EditedTestTitle",
                 Description = "Test description with edits."
 
             };
-
+            
             var request = new RestRequest("/api/Idea/Edit");
+
             request.AddQueryParameter("ideaId", lastIdeaId);
             request.AddBody(ideaRequest);
-
+            
+            // Act
             var response = client.Execute(request, Method.Put);
-
             var responseData = JsonSerializer.Deserialize<ApiResponseDTO>(response.Content);
 
-
+            // Assert
             Assert.That(response.StatusCode, Is.EqualTo(HttpStatusCode.OK));
 
             Assert.That(responseData.Msg, Is.EqualTo($"Edited successfully"));
@@ -137,16 +144,17 @@ namespace IdeaAPITests
         }
 
         [Test, Order(4)]
-        public void DeleteIdea_ShouldSuccceed()
+        public void DeleteIdea_ShouldSucceed()
         {
             
-
+            // Arrange
             var request = new RestRequest("/api/Idea/Delete");
-          request.AddQueryParameter("ideaId", lastIdeaId);
+            request.AddQueryParameter("ideaId", lastIdeaId);
  
+            // Act
             var response = client.Execute(request, Method.Delete);
 
-
+            // Assert
             Assert.That(response.StatusCode, Is.EqualTo(HttpStatusCode.OK));
 
             string expectedResponse = "The idea is deleted!"; // Response is string, not JSON object
@@ -157,6 +165,8 @@ namespace IdeaAPITests
         [Test, Order(5)]
         public void CreateIdea_WithWithoutCorrectData_ShouldNotSucceed()
         {
+            
+            //Arrange
             var ideaRequest = new IdeaDto
             {
                 Title = "TestTitle",
@@ -166,12 +176,12 @@ namespace IdeaAPITests
 
             var request = new RestRequest("/api/Idea/Create");
             request.AddBody(ideaRequest);
-
+            //Act
             var response = client.Execute(request, Method.Post);
 
             var responseData = JsonSerializer.Deserialize<ApiResponseDTO>(response.Content);
 
-
+            //Assert
             Assert.That(response.StatusCode, Is.EqualTo(HttpStatusCode.BadRequest));
 
         }
@@ -179,6 +189,7 @@ namespace IdeaAPITests
         [Test, Order(3)]
         public void EditIdea_WithWrongId_ShouldFail()
         {
+           // Arrange
             var ideaRequest = new IdeaDto
             {
                 Title = "EditedTestTitle",
@@ -190,13 +201,12 @@ namespace IdeaAPITests
             request.AddQueryParameter("ideaId", "112233");
             request.AddBody(ideaRequest);
 
+            //Act
             var response = client.Execute(request, Method.Put);
-
             
 
-
+            //Assert
             Assert.That(response.StatusCode, Is.EqualTo(HttpStatusCode.BadRequest));
-
             Assert.That(response.Content, Does.Contain($"There is no such idea!"));
 
         }
@@ -206,15 +216,15 @@ namespace IdeaAPITests
         public void DeleteIdea_WithWrongId_ShoudFail()
         {
 
-
+            //Arrange
             var request = new RestRequest("/api/Idea/Delete");
             request.AddQueryParameter("ideaId", "123456");
 
+            //Act
             var response = client.Execute(request, Method.Delete);
 
-
+            //Assert
             Assert.That(response.StatusCode, Is.EqualTo(HttpStatusCode.BadRequest));
-
             Assert.That(response.Content, Does.Contain($"There is no such idea!"));
 
         }
