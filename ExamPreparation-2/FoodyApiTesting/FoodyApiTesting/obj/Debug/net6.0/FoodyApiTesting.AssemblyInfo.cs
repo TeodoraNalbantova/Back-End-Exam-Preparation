@@ -14,7 +14,7 @@ using System.Reflection;
 [assembly: System.Reflection.AssemblyCompanyAttribute("FoodyApiTesting")]
 [assembly: System.Reflection.AssemblyConfigurationAttribute("Debug")]
 [assembly: System.Reflection.AssemblyFileVersionAttribute("1.0.0.0")]
-[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+79170e3f49e668599c837fb4a3b7b809eaca1778")]
+[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+98d4312f4e0b6e460c3c30703a37239ab49c222a")]
 [assembly: System.Reflection.AssemblyProductAttribute("FoodyApiTesting")]
 [assembly: System.Reflection.AssemblyTitleAttribute("FoodyApiTesting")]
 [assembly: System.Reflection.AssemblyVersionAttribute("1.0.0.0")]

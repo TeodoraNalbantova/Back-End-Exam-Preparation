@@ -108,7 +108,7 @@ namespace IdeaAPITests
             //Assert
             Assert.That(response.StatusCode, Is.EqualTo(HttpStatusCode.OK));
 
-            Assert.That(responseDataArray.Length, Is.GreaterThan(0))
+            Assert.That(responseDataArray.Length, Is.GreaterThan(0));
 
             // Взимаме Id на последнта идея от масива
 
